@@ -19,9 +19,9 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deliver for development') {
+        stage('Deliver for Staging') {
             when {
-                branch 'development' 
+                branch 'staging'
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
@@ -29,9 +29,9 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Deploy for production') {
+        stage('Deploy for Production') {
             when {
-                branch 'production'  
+                branch 'release'
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
